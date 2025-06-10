@@ -18,7 +18,7 @@ l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 print(f"original list is : {l}")
 
 
-def reverse_of_array(l, left, right):
+def reverse_of_array(l, left=0, right=len(l) - 1):
     if left >= right:
         return
     l[left], l[right] = l[right], l[left]
@@ -26,4 +26,4 @@ def reverse_of_array(l, left, right):
 
 
 reverse_of_array(l, 0, len(l) - 1)
-print(f"Reversed list is : {l}")
+print(f"Reverse list is : {l}")
