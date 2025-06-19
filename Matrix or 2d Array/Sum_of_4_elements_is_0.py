@@ -31,28 +31,35 @@
 
 
 # method 3 --->
-l = [0, 1, 2, -1, -1, 4, 2, 3]
-n = len(l)
-l.sort()
-result = []
-for i in range(0, n):
-    if i != 0 and l[i] == l[i - 1]:
-        continue
-    j = i + 1
-    k = n - 1
-    while j < k:
-        total = l[i] + l[j] + l[k]
-        if total < 0:
-            j += 1
-        elif total > 0:
-            k -= 1
-        else:
-            temp = [l[i], l[j], l[k]]
-            result.append(temp)
-            j += 1
-            k -= 1
-        while j < k and l[j] == l[j - 1]:
-            j += 1
-        while j < k and l[k] == l[k + 1]:
-            k -= 1
-print(f"list is : {result}")
+class Solution(object):
+    def fourSum(self, nums, target):
+        nums.sort()
+        n = len(nums)
+        result = []
+        for i in range(0, n):
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            for j in range(i + 1, n):
+                if j > i + 1 and nums[j] == nums[j - 1]:
+                    continue
+                k = j + 1
+                l = n - 1
+                while k < l:
+                    total = nums[i] + nums[j] + nums[k] + nums[l]
+                    if total == target:
+                        result.append([nums[i], nums[j], nums[k], nums[l]])
+                        k += 1
+                        l -= 1
+                        while k < l and nums[k] == nums[k - 1]:
+                            k += 1
+                        while k < l and nums[l] == nums[l + 1]:
+                            l -= 1
+                    elif total < target:
+                        k += 1
+                    else:
+                        l -= 1
+        return result
+
+
+s1 = Solution()
+print(s1.fourSum(nums=[1, 0, -1, 0, -2, 2], target=0))
