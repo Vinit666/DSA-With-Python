@@ -8,6 +8,9 @@ def search_rsa(nums, target):
         if nums[mid] == target:
             ti = mid
             break
+        elif nums[low] == nums[mid] == nums[high]:
+            low += 1
+            high -= 1
         elif nums[mid] <= nums[high]:
             if nums[mid] <= target <= nums[high]:
                 low = mid + 1
@@ -24,4 +27,31 @@ def search_rsa(nums, target):
         return False
 
 
-print(search_rsa(nums=[17, 18, 20, 1, 3, 4, 5, 7, 10, 11, 16], target=0))
+print(
+    search_rsa(
+        nums=[
+            17,
+            17,
+            17,
+            17,
+            17,
+            17,
+            17,
+            17,
+            17,
+            17,
+            17,
+            18,
+            20,
+            1,
+            3,
+            4,
+            10,
+            11,
+            16,
+            17,
+            17,
+        ],
+        target=3,
+    )
+)
