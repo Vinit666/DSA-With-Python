@@ -39,15 +39,13 @@ def func(index, total, subset):
 
     if index >= n:
         return
-    if len(result) == 1:
-        return True
-    else:
-        subset.append(nums[index])
-        summ = total + nums[index]
-        func(index + 1, summ, subset)
-        e = subset.pop()
-        summ = summ - e
-        func(index + 1, summ, subset)
+    subset.append(nums[index])
+    summ = total + nums[index]
+    func(index + 1, summ, subset)
+    e = subset.pop()
+    summ = summ - e
+    func(index + 1, summ, subset)
+    return result
 
 
 nums = [5, 9, 4]
