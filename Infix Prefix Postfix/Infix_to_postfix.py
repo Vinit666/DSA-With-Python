@@ -9,7 +9,7 @@ class Solution:
         else:
             return 0
 
-    def InfixToPrefix(self, s):
+    def InfixToPostfix(self, s):
         stack = []
         result = []
 
@@ -34,4 +34,4 @@ class Solution:
 
 
 s1 = Solution()
-print(s1.InfixToPrefix("a+b*(c^d-e)"))
+print(s1.InfixToPostfix("a+b*(c^d-e)"))
